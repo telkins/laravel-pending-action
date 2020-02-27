@@ -1,0 +1,49 @@
+{
+    "name": "telkins/laravel-pending-action",
+    "description": "A (somewhat opinionated) Laravel package to help make preparing and executing actions a little easier and more uniform.",
+    "keywords": [
+        "telkins",
+        "laravel",
+        "pending",
+        "action",
+        "object",
+        "prep",
+        "execute",
+        "laravel-pending-action"
+    ],
+    "homepage": "https://github.com/telkins/laravel-pending-action",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Travis Elkins",
+            "email": "travis.elkins+github@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.4",
+        "laravel/framework": "^6.17"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^4.0",
+        "phpunit/phpunit": "^9.0",
+        "symfony/var-dumper": "^4.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Telkins\\LaravelPendingAction\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Telkins\\LaravelPendingAction\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
