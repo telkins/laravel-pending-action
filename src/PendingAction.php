@@ -2,9 +2,9 @@
 
 namespace Telkins\LaravelPendingAction;
 
-use Telkins\LaravelPendingAction\Contracts\Params as Contract;
+use Telkins\LaravelPendingAction\Contracts\PendingAction as Contract;
 
-abstract class Params implements Contract
+abstract class PendingAction implements Contract
 {
     private $actionClass;
 

@@ -3,13 +3,11 @@
 namespace Telkins\LaravelPendingAction\Tests\TestClasses;
 
 use Telkins\LaravelPendingAction\Action;
-use Telkins\LaravelPendingAction\Contracts\Params;
 
 class BackupData extends Action
 {
-    protected function executeAction(Params $params)
+    public function execute(BackupDataPendingAction $pendingAction)
     {
-dump(__METHOD__ . ' - ' . __LINE__);
-        // backup data for user identified by $params->username...
+        // backup data for user identified by $pendingAction->username...
     }
 }

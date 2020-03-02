@@ -2,9 +2,9 @@
 
 namespace Telkins\LaravelPendingAction\Tests\TestClasses;
 
-use Telkins\LaravelPendingAction\Params;
+use Telkins\LaravelPendingAction\PendingAction;
 
-class BackupDataParams extends Params
+class BackupDataPendingAction extends PendingAction
 {
     public $username;
 

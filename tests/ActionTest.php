@@ -4,36 +4,49 @@ namespace Telkins\LaravelPendingAction\Tests;
 
 use Orchestra\Testbench\TestCase;
 use Telkins\LaravelPendingAction\Tests\TestClasses\BackupData;
-use Telkins\LaravelPendingAction\Tests\TestClasses\BackupDataParams;
 use Telkins\LaravelPendingAction\Tests\TestClasses\BackupDataExplicit;
+use Telkins\LaravelPendingAction\Tests\TestClasses\BackupDataIdeFriendly;
+use Telkins\LaravelPendingAction\Tests\TestClasses\BackupDataPendingAction;
+use Telkins\LaravelPendingAction\Tests\TestClasses\BackupDataIdeFriendlyExplicit;
+use Telkins\LaravelPendingAction\Tests\TestClasses\BackupDataIdeFriendlyPendingAction;
 
 class ActionTest extends TestCase
 {
-    /** @test */
-    public function prepping_action_returns_params_object()
+    /**
+     * @test
+     * @dataProvider providePendingActionTypes
+     */
+    public function prepping_action_returns_expected_pending_action($actionClass, $pendingActionClass)
     {
-        $this->assertInstanceOf(BackupDataParams::class, BackupData::prep());
+        $this->assertInstanceOf($pendingActionClass, $actionClass::prep());
     }
 
-    /** @test */
-    public function prepping_action_returns_params_object_explicit()
+    public function providePendingActionTypes()
     {
-        $this->assertInstanceOf(BackupDataParams::class, BackupDataExplicit::prep());
+        return [
+            [BackupData::class, BackupDataPendingAction::class],
+            [BackupDataExplicit::class, BackupDataPendingAction::class],
+            [BackupDataIdeFriendly::class, BackupDataIdeFriendlyPendingAction::class],
+            [BackupDataIdeFriendlyExplicit::class, BackupDataIdeFriendlyPendingAction::class],
+        ];
     }
 
-    /** @test */
-    public function it_calls_custom_execute_action_with_params()
+    /**
+     * @test
+     * @dataProvider providePendingActionTypes
+     */
+    public function it_calls_action_execute_with_pending_action($actionClass, $pendingActionClass)
     {
-        $backupData = BackupDataExplicit::prep();
+        $pendingAction = $actionClass::prep();
 
-        $this->partialMock(BackupDataExplicit::class, function ($mock) use ($backupData) {
-            $mock->shouldAllowMockingProtectedMethods()
-                ->shouldReceive('executeAction')
+        $this->partialMock($actionClass, function ($mock) use ($pendingAction) {
+            $mock
+                ->shouldReceive('execute')
                 ->once()
-                ->with($backupData);
+                ->with($pendingAction);
         });
 
-        $backupData->forUser('john.doe')
+        $pendingAction->forUser('john.doe')
             ->execute();
     }
 }

@@ -2,7 +2,8 @@
 
 namespace Telkins\LaravelPendingAction\Contracts;
 
-interface Params
+interface PendingAction
 {
+    public function actionClass(string $actionClass): self;
     public function execute();
 }
