@@ -6,9 +6,10 @@ use Orchestra\Testbench\TestCase;
 use Telkins\LaravelPendingAction\Tests\TestClasses\BackupData;
 use Telkins\LaravelPendingAction\Tests\TestClasses\BackupDataExplicit;
 use Telkins\LaravelPendingAction\Tests\TestClasses\BackupDataIdeFriendly;
-use Telkins\LaravelPendingAction\Tests\TestClasses\BackupDataPendingAction;
 use Telkins\LaravelPendingAction\Tests\TestClasses\BackupDataIdeFriendlyExplicit;
 use Telkins\LaravelPendingAction\Tests\TestClasses\BackupDataIdeFriendlyPendingAction;
+use Telkins\LaravelPendingAction\Tests\TestClasses\BackupDataPendingAction;
+use Telkins\LaravelPendingAction\Tests\TestClasses\NotifyUser;
 
 class ActionTest extends TestCase
 {
@@ -48,5 +49,15 @@ class ActionTest extends TestCase
 
         $pendingAction->forUser('john.doe')
             ->execute();
+    }
+
+    /** @test */
+    public function it_passes_prep_arguments_to_pending_action_constructor()
+    {
+        $notification = 'some.data';
+
+        $pendingAction = NotifyUser::prep($notification);
+
+        $this->assertSame($notification, $pendingAction->notification);
     }
 }

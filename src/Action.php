@@ -9,16 +9,16 @@ abstract class Action implements Contract
 {
     protected static $pendingActionClass;
 
-    public static function prep(): PendingAction
+    public static function prep(...$args): PendingAction
     {
-        return self::autoPrep();
+        return self::autoPrep(...$args);
     }
 
-    protected static function autoPrep(): PendingAction
+    protected static function autoPrep(...$args): PendingAction
     {
         $pendingActionClass = self::getPendingActionClass();
 
-        return (new $pendingActionClass)->actionClass(static::class);
+        return (new $pendingActionClass(...$args))->actionClass(static::class);
     }
 
     private static function getPendingActionClass()
