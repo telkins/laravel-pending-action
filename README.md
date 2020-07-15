@@ -195,6 +195,37 @@ $pendingUpdateLeaderboard->forPlayer($peter)
     ->execute();
 ```
 
+### Add a Pending Action Contructor to Improve "Prep"
+
+Sometimes you may not want to litter your code with somewhat redundant or obvious method calls.  For example, if you have an action class that is meant to update a leaderboard, then you may not want to have to specifically call a `leaderboard()` method.  By creating a constructor on your pending action class, you can pass in the leaderboard via the action's `prep()` method.
+
+Here is how your pending action class might look in order to take advantage of this feature:
+
+``` php
+class UpdateLeaderboardPendingAction extends PendingAction
+{
+    public Leaderboard $leaderboard;
+
+    public function __construct(Leaderboard $leaderboard)
+    {
+        $this->leaderboard = $leaderboard;
+    }
+
+    // ...
+}
+```
+
+You can then use it like so:
+
+```php
+UpdateLeaderboard::prep($leaderboard)
+    ->forPlayer($player)
+    ->withScore($score)
+    ->execute();
+```
+
+**NOTE: This functionality is not IDE-friendly and the developer will be responsible for passing the right types of arguments in the right order to their constructor via `prep()`.**
+
 ## Testing
 
 ``` bash
