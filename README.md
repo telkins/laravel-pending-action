@@ -1,7 +1,7 @@
 # A (somewhat opinionated) Laravel package to help make preparing and executing actions a little easier and more uniform.
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/telkins/laravel-pending-action.svg?style=flat-square)](https://packagist.org/packages/telkins/laravel-pending-action)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/telkins/laravel-pending-action/run-tests?label=tests)](https://github.com/telkins/laravel-pending-action/actions?query=workflow%3Arun-tests+branch%3Amaster)
+![Tests](https://github.com/telkins/laravel-pending-action/workflows/run%20tests/badge.svg)
 [![Quality Score](https://img.shields.io/scrutinizer/g/telkins/laravel-pending-action.svg?style=flat-square)](https://scrutinizer-ci.com/g/telkins/laravel-pending-action)
 [![Total Downloads](https://img.shields.io/packagist/dt/telkins/laravel-pending-action.svg?style=flat-square)](https://packagist.org/packages/telkins/laravel-pending-action)
 
