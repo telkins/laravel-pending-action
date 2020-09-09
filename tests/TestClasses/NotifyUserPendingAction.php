@@ -12,8 +12,6 @@ class NotifyUserPendingAction extends PendingAction
 
     public function __construct($notification)
     {
-        // dump(__METHOD__ . ' - ' . __LINE__);
-        // dump($notification);
         $this->notification($notification);
     }
 
