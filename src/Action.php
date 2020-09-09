@@ -2,8 +2,8 @@
 
 namespace Telkins\LaravelPendingAction;
 
-use Telkins\LaravelPendingAction\Contracts\PendingAction;
 use Telkins\LaravelPendingAction\Contracts\Action as Contract;
+use Telkins\LaravelPendingAction\Contracts\PendingAction;
 
 abstract class Action implements Contract
 {
