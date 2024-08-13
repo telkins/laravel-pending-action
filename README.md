@@ -195,7 +195,7 @@ $pendingUpdateLeaderboard->forPlayer($peter)
     ->execute();
 ```
 
-### Add a Pending Action Contructor to Improve "Prep"
+### Add a Pending Action Constructor to Improve "Prep"
 
 Sometimes you may not want to litter your code with somewhat redundant or obvious method calls.  For example, if you have an action class that is meant to update a leaderboard, then you may not want to have to specifically call a `leaderboard()` method.  By creating a constructor on your pending action class, you can pass in the leaderboard via the action's `prep()` method.
 
